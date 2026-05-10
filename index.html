@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>母亲节快乐｜献给最爱的妈妈</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none; /* 避免拖动/选中文字，保持美观 */
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fceaea 0%, #fed9c0 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', '华文楷书', 'Microsoft YaHei', 'Dancing Script', 'KaiTi', cursive, sans-serif;
+            overflow-x: hidden;
+            padding: 16px;
+            position: relative;
+        }
+
+        /* 主贺卡容器 */
+        .card-container {
+            perspective: 1200px;
+            width: 100%;
+            max-width: 680px;
+            margin: auto;
+            z-index: 10;
+        }
+
+        /* 贺卡主体 */
+        .mothers-day-card {
+            background: rgba(255, 248, 240, 0.96);
+            backdrop-filter: blur(2px);
+            border-radius: 68px 68px 80px 80px;
+            box-shadow: 0 35px 60px rgba(0, 0, 0, 0.25), 0 0 0 12px #fffaf2, 0 0 0 18px #f5bc9e;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: cardGlow 3s infinite alternate;
+        }
+
+        @keyframes cardGlow {
+            0% {
+                box-shadow: 0 35px 60px rgba(0, 0, 0, 0.2), 0 0 0 12px #fffaf2, 0 0 0 18px #f5bc9e;
+            }
+            100% {
+                box-shadow: 0 45px 75px rgba(0, 0, 0, 0.3), 0 0 0 12px #fff5e6, 0 0 0 18px #ffaa7a;
+            }
+        }
+
+        /* 顶部彩带 */
+        .ribbon {
+            background: linear-gradient(135deg, #ffbc93, #ff9f6e);
+            padding: 12px 10px;
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            font-weight: bold;
+            color: #fff1e0;
+            text-shadow: 0 1px 3px #b34e24;
+            background-image: repeating-linear-gradient(45deg, rgba(255,220,180,0.3) 0px, rgba(255,220,180,0.3) 2px, transparent 2px, transparent 8px);
+        }
+
+        .ribbon span {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 5px 20px;
+            border-radius: 60px;
+            display: inline-block;
+            backdrop-filter: blur(3px);
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        /* 插图爱心区 */
+        .illustration {
+            position: relative;
+            text-align: center;
+            padding: 25px 30px 10px;
+            background: radial-gradient(circle at 20% 35%, #fff5ea, #ffe2cf);
+        }
+
+        .flower-icon {
+            font-size: 5.5rem;
+            filter: drop-shadow(2px 8px 15px rgba(236, 106, 66, 0.3));
+            animation: floatFlower 4s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes floatFlower {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .heart-glow {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            font-size: 2.2rem;
+            opacity: 0.8;
+            animation: heartbeat 1.4s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(0.9); opacity: 0.6; text-shadow: 0 0 0px #ff4d6d;}
+            50% { transform: scale(1.2); opacity: 1; text-shadow: 0 0 8px #ff4d6d;}
+            100% { transform: scale(0.9); opacity: 0.6; text-shadow: 0 0 0px #ff4d6d;}
+        }
+
+        /* 正文区域 */
+        .greeting {
+            text-align: center;
+            padding: 10px 32px 28px;
+            background: #fffaf5;
+        }
+
+        .greeting h1 {
+            font-size: 2.8rem;
+            color: #c75c3c;
+            font-family: 'Dancing Script', '华文楷书', cursive;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 0 #ffddc4;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        /* 精进后的祝福内容区块，更温情 */
+        .message {
+            background: #fff0e6;
+            border-radius: 55px;
+            padding: 22px 24px;
+            margin: 18px 0 12px;
+            font-weight: 500;
+            box-shadow: inset 0 1px 4px #ffcdb0, 0 8px 16px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s;
+        }
+
+        .message p {
+            margin: 12px 0;
+            font-size: 1.2rem;
+            line-height: 1.45;
+            color: #4e3020;
+            letter-spacing: 1px;
+        }
+
+        .message .bless {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #b34e2c;
+            background: rgba(255,215,180,0.5);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 40px;
+        }
+
+        .signature {
+            font-size: 1.3rem;
+            text-align: right;
+            font-style: italic;
+            color: #b95f3e;
+            margin-top: 16px;
+            border-top: 2px dashed #ffc7a8;
+            padding-top: 14px;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* 按钮 & 音乐控制 */
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 20px 30px;
+            background: #fff7ef;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #ffaa7f;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 60px;
+            color: #442211;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #b2572e;
+            transition: 0.07s linear;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #b2572e;
+        }
+
+        .music-btn {
+            background: #f29b6f;
+            box-shadow: 0 5px 0 #ac4f28;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.7rem;
+            padding: 12px;
+            background: rgba(255, 240, 225, 0.9);
+            color: #bb7256;
+            letter-spacing: 1px;
+        }
+
+        /* 动态花瓣画布 */
+        .petals-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .greeting h1 {
+                font-size: 2.2rem;
+            }
+            .message p {
+                font-size: 1rem;
+            }
+            .flower-icon {
+                font-size: 4rem;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <div class="mothers-day-card">
+        <div class="ribbon">
+            <span>🌷  Happy Mother's Day  🌷</span>
+        </div>
+        <div class="illustration">
+            <div class="flower-icon">🌺💐🥀🌸</div>
+            <div class="heart-glow">❤️</div>
+        </div>
+        <div class="greeting">
+            <h1>致我最亲爱的妈妈</h1>
+            <div class="message">
+                <p>✨ 岁月的痕迹爬上您的发梢，却从未带走温暖的笑容 ✨</p>
+                <p>🌼 您用一生的时光，教会我如何去爱、去善良、去坚强 🌼</p>
+                <p>🌹 柴米油盐里有您细腻的守护，晨光星辉下是您不变的牵挂 🌹</p>
+                <p>💖 世界再大，都不及您怀抱的温暖；时光再长，母爱永远芬芳 💖</p>
+                <p>🙏 谢谢您，把所有的温柔都给了我；给了我全世界最温暖的怀抱  🙏</p>
+                <p>🎀 <span class="bless">母亲节快乐！愿您眼角带笑，岁月不染眉梢</span> 🎀</p>
+            </div>
+            <div class="signature">
+                —— 永远爱您的孩子
+            </div>
+        </div>
+        <div class="actions">
+            <button class="btn" id="playMusicBtn">🎵 静心音乐 🎵</button>
+            <button class="btn music-btn" id="sendWishBtn">💐 康乃馨之约 💐</button>
+        </div>
+        <div class="footer-note">
+            🌸 轻点音乐，聆听爱的旋律 · 点击康乃馨，漫天花雨送祝福 🌸
+        </div>
+    </div>
+</div>
+
+<canvas id="petalCanvas" class="petals-canvas"></canvas>
+
+<script>
+    (function() {
+        // ---------------- 浪漫花瓣飘落特效 ----------------
+        const canvas = document.getElementById('petalCanvas');
+        let ctx = canvas.getContext('2d');
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let petals = [];
+        let animationId = null;
+        let petalActive = true;
+
+        const petalColors = ['#FFB7B2', '#FF9F8D', '#FFC2A1', '#F7A072', '#FFD1B5', '#E88471', '#FFB3A7', '#F7B787', '#FFB59E'];
+
+        class Petal {
+            constructor(x, y, size, speedX, speedY, rotation, rotationSpeed, color, opacity) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.speedX = speedX;
+                this.speedY = speedY;
+                this.rotation = rotation;
+                this.rotationSpeed = rotationSpeed;
+                this.color = color;
+                this.opacity = opacity;
+            }
+            draw(ctx) {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.globalAlpha = this.opacity;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.size * 0.6, this.size, 0, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.size * 0.3, this.size * 0.4, 0, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255,240,210,0.6)';
+                ctx.fill();
+                ctx.restore();
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.rotation += this.rotationSpeed;
+                if (this.y > height + 60 || this.x < -100 || this.x > width + 100) {
+                    this.reset();
+                }
+                this.speedY += 0.015;
+                if (this.speedY > 1.6) this.speedY = 1.6;
+            }
+            reset() {
+                this.x = Math.random() * width;
+                this.y = -25 - Math.random() * 120;
+                this.size = 6 + Math.random() * 14;
+                this.speedX = -0.8 + Math.random() * 1.6;
+                this.speedY = 0.6 + Math.random() * 1.1;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotationSpeed = -0.025 + Math.random() * 0.05;
+                this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+                this.opacity = 0.55 + Math.random() * 0.4;
+            }
+        }
+
+        function initPetals(count) {
+            petals = [];
+            for (let i = 0; i < count; i++) {
+                let p = new Petal(
+                    Math.random() * width,
+                    Math.random() * height,
+                    6 + Math.random() * 13,
+                    -0.8 + Math.random() * 1.6,
+                    0.5 + Math.random() * 1.2,
+                    Math.random() * Math.PI * 2,
+                    -0.025 + Math.random() * 0.05,
+                    petalColors[Math.floor(Math.random() * petalColors.length)],
+                    0.6 + Math.random() * 0.35
+                );
+                petals.push(p);
+            }
+        }
+
+        function resizeCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            if (petals.length > 0) {
+                let currentCount = petals.length;
+                initPetals(currentCount);
+            } else {
+                initPetals(50);
+            }
+        }
+
+        function drawPetals() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, width, height);
+            for (let p of petals) {
+                p.draw(ctx);
+                p.update();
+            }
+            animationId = requestAnimationFrame(drawPetals);
+        }
+
+        function startPetalAnimation() {
+            if (animationId) cancelAnimationFrame(animationId);
+            resizeCanvas();
+            drawPetals();
+        }
+
+        // 爆发花瓣 (发送祝福时)
+        function burstMorePetals(burstCount = 30) {
+            for (let i = 0; i < burstCount; i++) {
+                let newPetal = new Petal(
+                    Math.random() * width,
+                    -15,
+                    5 + Math.random() * 14,
+                    -1.0 + Math.random() * 2.0,
+                    0.4 + Math.random() * 1.4,
+                    Math.random() * Math.PI * 2,
+                    -0.03 + Math.random() * 0.07,
+                    petalColors[Math.floor(Math.random() * petalColors.length)],
+                    0.7 + Math.random() * 0.3
+                );
+                petals.push(newPetal);
+            }
+            if (petals.length > 200) {
+                petals = petals.slice(-180);
+            }
+            showFloatingBless();
+        }
+
+        let floatingMsgActive = false;
+        function showFloatingBless() {
+            if (floatingMsgActive) return;
+            floatingMsgActive = true;
+            const div = document.createElement('div');
+            div.innerText = '🌺 妈妈，康乃馨的芬芳送您，愿岁月温柔 🌺';
+            div.style.position = 'fixed';
+            div.style.bottom = '30%';
+            div.style.left = '50%';
+            div.style.transform = 'translateX(-50%)';
+            div.style.backgroundColor = 'rgba(255,225,195,0.96)';
+            div.style.color = '#bc4e2a';
+            div.style.padding = '12px 24px';
+            div.style.borderRadius = '60px';
+            div.style.fontWeight = 'bold';
+            div.style.fontSize = '1.2rem';
+            div.style.fontFamily = "'Dancing Script', 'KaiTi', cursive";
+            div.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+            div.style.zIndex = '10000';
+            div.style.backdropFilter = 'blur(6px)';
+            div.style.border = '2px solid #ffb48a';
+            div.style.whiteSpace = 'nowrap';
+            div.style.pointerEvents = 'none';
+            div.style.opacity = '0';
+            div.style.transition = 'opacity 0.3s, transform 0.5s';
+            document.body.appendChild(div);
+            setTimeout(() => {
+                div.style.opacity = '1';
+                div.style.transform = 'translateX(-50%) translateY(-20px)';
+            }, 10);
+            setTimeout(() => {
+                div.style.opacity = '0';
+                div.style.transform = 'translateX(-50%) translateY(-50px)';
+                setTimeout(() => { if (div && div.remove) div.remove(); floatingMsgActive = false; }, 600);
+            }, 2200);
+        }
+
+        // ==================== 背景音乐 : 温馨唯美轻旋律 ====================
+        let audioCtx = null;
+        let isPlaying = false;
+        let melodyLoopActive = false;
+        let melodyTimer = null;
+        // 精选温馨曲调（小行板 母爱主题）
+        const melodyNotes = [523, 587, 659, 698, 784, 880, 988]; // C D E F G A B 高音区
+        // 母亲节特制曲调：轻柔版 “世上只有妈妈好” 温暖变奏 + 原创祝福旋律
+        const tuneSequence = [
+            523, 587, 659, 523,  // 妈妈好
+            523, 587, 659, 523,  
+            659, 698, 784, 659, 587, 523,
+            392, 440, 523, 440, 392,
+            523, 587, 659, 698, 784, 880,
+            784, 698, 659, 587, 523, 494, 523  // 温柔收尾
+        ];
+
+        function initAudio() {
+            if (audioCtx) return audioCtx;
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            return audioCtx;
+        }
+
+        function playTone(frequency, duration, volume = 0.18) {
+            if (!audioCtx || audioCtx.state !== 'running') return;
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = frequency;
+            gain.gain.value = volume;
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+            osc.stop(now + duration);
+        }
+
+        function startMelody() {
+            if (!audioCtx) return;
+            if (melodyLoopActive) return;
+            melodyLoopActive = true;
+            let idx = 0;
+            function playNext() {
+                if (!melodyLoopActive || !isPlaying) {
+                    melodyLoopActive = false;
+                    return;
+                }
+                const freq = tuneSequence[idx % tuneSequence.length];
+                // 轻轻点缀
+                playTone(freq, 0.4, 0.16);
+                idx++;
+                melodyTimer = setTimeout(playNext, 540);
+                if (idx % tuneSequence.length === 0) {
+                    setTimeout(() => {
+                        if (melodyLoopActive && isPlaying) {
+                            // 每轮结束加一个小休止，自然
+                        }
+                    }, 100);
+                }
+            }
+            playNext();
+        }
+
+        function stopMelody() {
+            if (melodyTimer) {
+                clearTimeout(melodyTimer);
+                melodyTimer = null;
+            }
+            melodyLoopActive = false;
+        }
+
+        async function toggleMusic() {
+            try {
+                if (!audioCtx) {
+                    initAudio();
+                }
+                if (audioCtx.state === 'suspended') {
+                    await audioCtx.resume();
+                }
+                if (!isPlaying) {
+                    isPlaying = true;
+                    startMelody();
+                    const musicBtn = document.getElementById('playMusicBtn');
+                    if (musicBtn) musicBtn.innerHTML = '🎶 母爱旋律 · 静音 🎶';
+                    showMusicTip('🎼 轻柔旋律，献给妈妈的爱 🎼');
+                } else {
+                    isPlaying = false;
+                    stopMelody();
+                    const musicBtn = document.getElementById('playMusicBtn');
+                    if (musicBtn) musicBtn.innerHTML = '🎵 聆听心曲 🎵';
+                    showMusicTip('🔇 音乐已暂停，随时重温');
+                }
+            } catch(e) {
+                console.warn("音频: ", e);
+            }
+        }
+
+        function showMusicTip(msg) {
+            const tipDiv = document.createElement('div');
+            tipDiv.innerText = msg;
+            tipDiv.style.position = 'fixed';
+            tipDiv.style.bottom = '22px';
+            tipDiv.style.right = '22px';
+            tipDiv.style.backgroundColor = '#fff2e4';
+            tipDiv.style.padding = '6px 16px';
+            tipDiv.style.borderRadius = '40px';
+            tipDiv.style.fontWeight = '500';
+            tipDiv.style.fontSize = '0.8rem';
+            tipDiv.style.color = '#bc5a36';
+            tipDiv.style.boxShadow = '0 3px 12px rgba(0,0,0,0.15)';
+            tipDiv.style.zIndex = '10001';
+            tipDiv.style.opacity = '0';
+            tipDiv.style.transition = 'opacity 0.25s';
+            document.body.appendChild(tipDiv);
+            setTimeout(() => { tipDiv.style.opacity = '1'; }, 10);
+            setTimeout(() => { tipDiv.style.opacity = '0'; setTimeout(() => tipDiv.remove(), 400); }, 1800);
+        }
+
+        // 💐 康乃馨祝福 + 强烈花瓣+温馨弹窗
+        function sendWishAction() {
+            burstMorePetals(42);
+            const heartMessage = document.createElement('div');
+            heartMessage.innerHTML = '💐 妈妈，母亲节快乐！💐<br>🌸 愿您永远被岁月温柔以待 🌸';
+            heartMessage.style.position = 'fixed';
+            heartMessage.style.top = '38%';
+            heartMessage.style.left = '50%';
+            heartMessage.style.transform = 'translate(-50%, -50%)';
+            heartMessage.style.backgroundColor = 'rgba(255,230,205,0.98)';
+            heartMessage.style.padding = '18px 28px';
+            heartMessage.style.borderRadius = '70px';
+            heartMessage.style.fontSize = '1.4rem';
+            heartMessage.style.fontWeight = 'bold';
+            heartMessage.style.color = '#bc4e2a';
+            heartMessage.style.fontFamily = "'Dancing Script', 'KaiTi', cursive";
+            heartMessage.style.boxShadow = '0 18px 30px rgba(0,0,0,0.2)';
+            heartMessage.style.border = '2px solid #ffb48a';
+            heartMessage.style.zIndex = '10002';
+            heartMessage.style.whiteSpace = 'nowrap';
+            heartMessage.style.textAlign = 'center';
+            heartMessage.style.lineHeight = '1.4';
+            heartMessage.style.pointerEvents = 'none';
+            heartMessage.style.opacity = '0';
+            heartMessage.style.transition = 'all 0.5s ease';
+            document.body.appendChild(heartMessage);
+            setTimeout(() => { heartMessage.style.opacity = '1'; heartMessage.style.transform = 'translate(-50%, -65%)'; }, 20);
+            setTimeout(() => {
+                heartMessage.style.opacity = '0';
+                heartMessage.style.transform = 'translate(-50%, -85%)';
+                setTimeout(() => { if (heartMessage && heartMessage.remove) heartMessage.remove(); }, 600);
+            }, 2800);
+        }
+
+        // 窗口适应 + 花瓣初始化
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            if (petalActive) {
+                for (let p of petals) {
+                    if (p.x > width + 120 || p.x < -120) p.reset();
+                    if (p.y > height + 120) p.reset();
+                }
+            }
+        });
+
+        // 启动所有特效
+        function init() {
+            initPetals(55);
+            startPetalAnimation();
+            const musicBtn = document.getElementById('playMusicBtn');
+            const wishBtn = document.getElementById('sendWishBtn');
+            if (musicBtn) musicBtn.addEventListener('click', toggleMusic);
+            if (wishBtn) wishBtn.addEventListener('click', sendWishAction);
+            setTimeout(() => {
+                showMusicTip('💖 点击音乐按钮，聆听献给妈妈的旋律 💖');
+            }, 600);
+        }
+        init();
+    })();
+</script>
+</body>
+</html>
