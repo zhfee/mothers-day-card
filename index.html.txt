@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>母亲节动态电子贺卡 | 致敬母爱</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none; /* 避免选中文字干扰体验 */
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fce8e0 0%, #ffd9c4 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', '华文楷书', 'Microsoft YaHei', 'Dancing Script', 'KaiTi', cursive, sans-serif;
+            overflow-x: hidden;
+            padding: 16px;
+        }
+
+        /* 主贺卡容器 */
+        .card-container {
+            perspective: 1200px;
+            width: 100%;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* 贺卡主体 */
+        .mothers-day-card {
+            background: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(2px);
+            border-radius: 68px 68px 80px 80px;
+            box-shadow: 0 35px 60px rgba(0, 0, 0, 0.25), 0 0 0 12px #fff9ef, 0 0 0 18px #f5bc9e;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: cardGlow 3s infinite alternate;
+        }
+
+        @keyframes cardGlow {
+            0% {
+                box-shadow: 0 35px 60px rgba(0, 0, 0, 0.2), 0 0 0 12px #fff9ef, 0 0 0 18px #f5bc9e;
+            }
+            100% {
+                box-shadow: 0 45px 75px rgba(0, 0, 0, 0.3), 0 0 0 12px #fff5e6, 0 0 0 18px #ffaa7a;
+            }
+        }
+
+        /* 装饰彩带区 (顶部) */
+        .ribbon {
+            background: #ffb48a;
+            padding: 12px 10px;
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            font-weight: bold;
+            color: #fff1e0;
+            text-shadow: 0 1px 2px #c25d3a;
+            word-break: keep-all;
+            background-image: repeating-linear-gradient(45deg, #ffc4a2 0px, #ffc4a2 2px, #ffaa7f 2px, #ffaa7f 8px);
+        }
+
+        .ribbon span {
+            background: rgba(0,0,0,0.1);
+            padding: 4px 18px;
+            border-radius: 60px;
+            display: inline-block;
+            backdrop-filter: blur(2px);
+            font-family: monospace;
+        }
+
+        /* 插图&心形图片区 */
+        .illustration {
+            position: relative;
+            text-align: center;
+            padding: 30px 30px 15px;
+            background: radial-gradient(circle at 20% 30%, #fff3e4, #ffe2cf);
+        }
+
+        .flower-icon {
+            font-size: 5.8rem;
+            filter: drop-shadow(2px 8px 15px rgba(236, 106, 66, 0.3));
+            animation: floatFlower 4s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes floatFlower {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .heart-glow {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            opacity: 0.7;
+            animation: heartbeat 1.4s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(0.9); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; text-shadow: 0 0 5px #ff4d6d;}
+            100% { transform: scale(0.9); opacity: 0.5; }
+        }
+
+        /* 主要文字内容 */
+        .greeting {
+            text-align: center;
+            padding: 12px 32px 28px;
+            background: #fffaf5;
+        }
+
+        .greeting h1 {
+            font-size: 2.7rem;
+            color: #c75c3c;
+            font-family: 'Dancing Script', '华文楷书', cursive;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0 #ffddc4;
+            animation: fadeInDown 1s ease;
+        }
+
+        .greeting .message {
+            font-size: 1.4rem;
+            line-height: 1.4;
+            color: #5a3e2e;
+            background: #fff0e6;
+            border-radius: 55px;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-weight: 500;
+            box-shadow: inset 0 1px 4px #ffcdb0, 0 8px 16px rgba(0,0,0,0.05);
+            backdrop-filter: blur(2px);
+        }
+
+        .message p {
+            margin: 10px 0;
+        }
+
+        .signature {
+            font-size: 1.3rem;
+            text-align: right;
+            font-style: italic;
+            color: #b95f3e;
+            margin-top: 12px;
+            border-top: 2px dashed #ffc7a8;
+            padding-top: 12px;
+            font-weight: bold;
+        }
+
+        /* 按钮互动区 + 音乐控制 */
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px 20px 30px;
+            background: #fff7ef;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #ffaa7f;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 60px;
+            color: #442211;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #b2572e;
+            transition: 0.1s linear;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #b2572e;
+        }
+
+        .music-btn {
+            background: #f29b6f;
+            box-shadow: 0 5px 0 #ac4f28;
+        }
+
+        /* 花瓣飘落画布 */
+        .petals-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* 底部装饰小元素 */
+        .footer-note {
+            text-align: center;
+            font-size: 0.7rem;
+            padding: 10px;
+            background: rgba(255, 240, 225, 0.9);
+            color: #bb7256;
+        }
+
+        /* 动画关键帧 */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式 */
+        @media (max-width: 550px) {
+            .greeting h1 {
+                font-size: 2rem;
+            }
+            .greeting .message {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+            .flower-icon {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <div class="mothers-day-card">
+        <div class="ribbon">
+            <span>🌷  Happy Mother's Day  🌷</span>
+        </div>
+        <div class="illustration">
+            <div class="flower-icon">🌸💐🌼</
